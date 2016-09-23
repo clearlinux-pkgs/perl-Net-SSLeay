@@ -4,7 +4,7 @@
 #
 Name     : perl-Net-SSLeay
 Version  : 1.78
-Release  : 22
+Release  : 23
 URL      : http://search.cpan.org/CPAN/authors/id/M/MI/MIKEM/Net-SSLeay-1.78.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/M/MI/MIKEM/Net-SSLeay-1.78.tar.gz
 Summary  : 'Perl extension for using OpenSSL'
