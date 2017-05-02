@@ -4,7 +4,7 @@
 #
 Name     : perl-Net-SSLeay
 Version  : 1.81
-Release  : 27
+Release  : 28
 URL      : http://search.cpan.org/CPAN/authors/id/M/MI/MIKEM/Net-SSLeay-1.81.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/M/MI/MIKEM/Net-SSLeay-1.81.tar.gz
 Summary  : 'Perl extension for using OpenSSL'
