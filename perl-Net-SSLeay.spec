@@ -4,14 +4,15 @@
 #
 Name     : perl-Net-SSLeay
 Version  : 1.85
-Release  : 36
-URL      : https://www.cpan.org/authors/id/M/MI/MIKEM/Net-SSLeay-1.85.tar.gz
-Source0  : https://www.cpan.org/authors/id/M/MI/MIKEM/Net-SSLeay-1.85.tar.gz
+Release  : 37
+URL      : https://cpan.metacpan.org/authors/id/M/MI/MIKEM/Net-SSLeay-1.85.tar.gz
+Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIKEM/Net-SSLeay-1.85.tar.gz
 Summary  : 'Perl extension for using OpenSSL'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl Artistic-2.0
 Requires: perl-Net-SSLeay-lib
-Requires: perl-Net-SSLeay-doc
+Requires: perl-Net-SSLeay-license
+Requires: perl-Net-SSLeay-man
 BuildRequires : openssl-dev
 BuildRequires : zlib-dev
 
@@ -20,20 +21,29 @@ By popular demand...
 --------------------
 perl -MNet::SSLeay -e '($p)=Net::SSLeay::get_https("www.openssl.org", 443, "/"); print $p'
 
-%package doc
-Summary: doc components for the perl-Net-SSLeay package.
-Group: Documentation
-
-%description doc
-doc components for the perl-Net-SSLeay package.
-
-
 %package lib
 Summary: lib components for the perl-Net-SSLeay package.
 Group: Libraries
+Requires: perl-Net-SSLeay-license
 
 %description lib
 lib components for the perl-Net-SSLeay package.
+
+
+%package license
+Summary: license components for the perl-Net-SSLeay package.
+Group: Default
+
+%description license
+license components for the perl-Net-SSLeay package.
+
+
+%package man
+Summary: man components for the perl-Net-SSLeay package.
+Group: Default
+
+%description man
+man components for the perl-Net-SSLeay package.
 
 
 %prep
@@ -61,6 +71,8 @@ make test
 
 %install
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/doc/perl-Net-SSLeay
+cp LICENSE %{buildroot}/usr/share/doc/perl-Net-SSLeay/LICENSE
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot}
 else
@@ -153,10 +165,15 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Net/SSLeay/want_read.al
 /usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Net/SSLeay/want_write.al
 
-%files doc
-%defattr(-,root,root,-)
-%doc /usr/share/man/man3/*
-
 %files lib
 %defattr(-,root,root,-)
 /usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Net/SSLeay/SSLeay.so
+
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/perl-Net-SSLeay/LICENSE
+
+%files man
+%defattr(-,root,root,-)
+/usr/share/man/man3/Net::SSLeay.3
+/usr/share/man/man3/Net::SSLeay::Handle.3
