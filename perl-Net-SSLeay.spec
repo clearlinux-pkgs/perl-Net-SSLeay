@@ -4,7 +4,7 @@
 #
 Name     : perl-Net-SSLeay
 Version  : 1.85
-Release  : 42
+Release  : 43
 URL      : https://cpan.metacpan.org/authors/id/M/MI/MIKEM/Net-SSLeay-1.85.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/MI/MIKEM/Net-SSLeay-1.85.tar.gz
 Summary  : 'Perl extension for using OpenSSL'
