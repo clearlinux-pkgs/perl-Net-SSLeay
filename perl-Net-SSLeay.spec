@@ -4,14 +4,14 @@
 #
 Name     : perl-Net-SSLeay
 Version  : 1.88
-Release  : 49
+Release  : 50
 URL      : https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.88.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.88.tar.gz
 Summary  : 'Perl extension for using OpenSSL'
 Group    : Development/Tools
 License  : Artistic-2.0
-Requires: perl-Net-SSLeay-data = %{version}-%{release}
 Requires: perl-Net-SSLeay-license = %{version}-%{release}
+Requires: perl-Net-SSLeay-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : openssl-dev
 
@@ -20,18 +20,9 @@ By popular demand...
 --------------------
 perl -MNet::SSLeay -e '($p)=Net::SSLeay::get_https("www.openssl.org", 443, "/"); print $p'
 
-%package data
-Summary: data components for the perl-Net-SSLeay package.
-Group: Data
-
-%description data
-data components for the perl-Net-SSLeay package.
-
-
 %package dev
 Summary: dev components for the perl-Net-SSLeay package.
 Group: Development
-Requires: perl-Net-SSLeay-data = %{version}-%{release}
 Provides: perl-Net-SSLeay-devel = %{version}-%{release}
 Requires: perl-Net-SSLeay = %{version}-%{release}
 
@@ -45,6 +36,15 @@ Group: Default
 
 %description license
 license components for the perl-Net-SSLeay package.
+
+
+%package perl
+Summary: perl components for the perl-Net-SSLeay package.
+Group: Default
+Requires: perl-Net-SSLeay = %{version}-%{release}
+
+%description perl
+perl components for the perl-Net-SSLeay package.
 
 
 %prep
@@ -87,7 +87,16 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %files
 %defattr(-,root,root,-)
 
-%files data
+%files dev
+%defattr(-,root,root,-)
+/usr/share/man/man3/Net::SSLeay.3
+/usr/share/man/man3/Net::SSLeay::Handle.3
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/perl-Net-SSLeay/5abee7bc8b5c3cb09631ca37a850924ac26588e4
+
+%files perl
 %defattr(-,root,root,-)
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/Net/SSLeay.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/Net/SSLeay.pod
@@ -169,12 +178,3 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/Net/SSLeay/want_nothing.al
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/Net/SSLeay/want_read.al
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/Net/SSLeay/want_write.al
-
-%files dev
-%defattr(-,root,root,-)
-/usr/share/man/man3/Net::SSLeay.3
-/usr/share/man/man3/Net::SSLeay::Handle.3
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Net-SSLeay/5abee7bc8b5c3cb09631ca37a850924ac26588e4
