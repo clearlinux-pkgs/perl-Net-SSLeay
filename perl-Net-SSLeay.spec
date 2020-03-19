@@ -4,7 +4,7 @@
 #
 Name     : perl-Net-SSLeay
 Version  : 1.88
-Release  : 52
+Release  : 53
 URL      : https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.88.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.88.tar.gz
 Summary  : 'Perl extension for using OpenSSL'
@@ -14,6 +14,7 @@ Requires: perl-Net-SSLeay-license = %{version}-%{release}
 Requires: perl-Net-SSLeay-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : openssl-dev
+Patch1: backport-44bea2ba16a7526e3b22b10fcb4b91815a89f3bf.patch
 
 %description
 By popular demand...
@@ -50,6 +51,7 @@ perl components for the perl-Net-SSLeay package.
 %prep
 %setup -q -n Net-SSLeay-1.88
 cd %{_builddir}/Net-SSLeay-1.88
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -69,7 +71,7 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make TEST_VERBOSE=1 test || :
+make TEST_VERBOSE=1 test
 
 %install
 rm -rf %{buildroot}
