@@ -7,7 +7,7 @@
 #
 Name     : perl-Net-SSLeay
 Version  : 1.94
-Release  : 69
+Release  : 70
 URL      : https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.94.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.94.tar.gz
 Summary  : 'Perl bindings for OpenSSL and LibreSSL'
